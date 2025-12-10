@@ -1,0 +1,441 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courgette', cursive !important;
+  margin: 0;
+}
+
+.song {
+  visibility: hidden;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  display: none;
+  opacity: 0;
+  width: 100vw;
+}
+
+.container > div {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 20vh;
+}
+
+.one { font-size: 4.5rem; }
+.two { font-size: 1.2rem; font-weight: lighter; }
+.three { font-size: 3rem; }
+
+.four .text-box {
+  border: 3px solid #aaa;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  width: 600px;
+}
+
+.text-box p {
+  margin: 0;
+  text-align: left;
+}
+
+.text-box span { visibility: hidden; }
+
+.text-box .fake-btn {
+  background-color: rgb(21, 161, 237);
+  border-radius: 3px;
+  bottom: -50px;
+  color: #fff;
+  padding: .5rem 1rem;
+  position: absolute;
+  right: 5px;
+}
+
+.five p {
+  font-size: 2rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.idea-3 strong {
+  border-radius: 3px;
+  display: inline-block;
+  padding: 3px 5px;
+}
+
+.five .idea-5 { font-size: 4rem; }
+
+.idea-5 span,
+.idea-6 span,
+.wish-hbd span { display: inline-block; }
+
+.idea-6 span { font-size: 15rem; }
+
+/* MAKE FINAL PHOTO BIG & CENTERED */
+.six {
+  position: relative;
+  top: 10vh;
+  z-index: 10;
+  text-align: center;
+}
+
+/* FINAL PHOTO (rectangle, full size, centered) */
+.profile-picture {
+    width: auto;
+    height: 520px;          /* Adjust size as you like */
+    max-width: 90vw;
+    object-fit: contain;    /* shows full picture without cropping */
+    display: block;
+    margin: -70px auto 0 auto; 
+    border-radius: 0;       /* NO circle */
+    box-shadow: 0 0 18px rgba(0,0,0,0.35);  /* optional soft shadow */
+}
+
+
+.baloons img {
+  display: inline-block;
+  position: absolute;
+}
+
+.baloons img:nth-child(even) { left: -10%; }
+.baloons img:nth-child(odd) { right: -10%; }
+.baloons img:nth-child(3n + 0) { left: 30%; }
+
+.seven, .eight {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.eight svg {
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 25px;
+  z-index: -1;
+}
+
+
+.nine p {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+#replay { cursor: pointer; z-index: 3; }
+
+/* ========== INTRO OVERLAY (text + bulb) ========== */
+
+#lights-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.7s ease;
+}
+
+#intro-wrapper {
+  text-align: center;
+  color: #fff;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#intro-msg {
+  font-size: 2rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#bulbBtn {
+  width: 140px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#bulbBtn:hover {
+  transform: scale(1.1);
+}
+
+.lights-on #lights-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ========== MUSIC SCREEN ========== */
+#music-screen {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  color: black;
+  display: none;        /* hidden until bulb is clicked */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 99998;
+}
+
+#music-text {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+#musicBtn {
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+#musicBtn:hover {
+  transform: scale(1.08);
+}
+
+.music-hide {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+html.final-bg, body.final-bg {
+    background-image: url("../img/wp.png");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.final-bg * {
+    
+  color: #ffe9b0 !important;
+  text-shadow:
+      0 0 4px rgba(255, 230, 150, 0.8),
+      0 0 12px rgba(255, 200, 80, 0.7),
+      0 0 22px rgba(255, 170, 60, 0.6);
+
+}
+
+/* ==============================
+   SIDE BALLOONS (AFTER PHOTO)
+============================== */
+
+#side-balloons {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    display: none; 
+}
+
+.side-balloon {
+    position: absolute;
+    width: 360px;                /* MUCH BIGGER (was 220px) */
+    opacity: 0.92;
+    animation: sideFloat 4.5s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+/* LEFT balloon */
+.left-b {
+    left: -3%;                  /* slightly off the screen for realism */
+    bottom: 5%;
+    animation-duration: 4.8s;
+}
+
+/* RIGHT balloon */
+.right-b {
+    right: -3%;
+    bottom: 6%;
+    animation-duration: 5.2s;
+}
+
+/* BIGGER, BOUNCIER, PRETTIER FLOAT */
+@keyframes sideFloat {
+    0%   { transform: translateY(0px) scale(1); }
+    25%  { transform: translateY(-35px) scale(1.03); }
+    50%  { transform: translateY(-20px) scale(1); }
+    75%  { transform: translateY(-40px) scale(1.04); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+
+/* --- Gift Screen --- */
+#gift-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  z-index: 99998;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+#gift-screen.hidden {
+  display: none;
+}
+
+#gift-top-text {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px black;
+}
+
+#gift-bottom-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+#giftBox {
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#giftBox:hover {
+  transform: scale(1.08);
+}
+
+/* --- Flashbang effect --- */
+#flashbang {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999999;
+  transition: opacity 0.3s ease;
+}
+
+/* Smooth fade-in effect after lights turn on */
+.final-bg-fade {
+    animation: bgFadeIn 1.4s ease forwards;
+}
+
+@keyframes bgFadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Smooth fade-in for cozy room background */
+body {
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+body.bg-hidden {
+  opacity: 0;
+}
+
+/* ========== CUSTOM FONTS FOR GIFT + MUSIC TEXT ========== */
+#gift-bottom-text,
+#gift-top-text,
+#music-text {
+    font-family: 'Courgette', cursive;
+}
+
+/* === CAT BUTTON (round, glossy) === */
+#cat-button-box {
+    position: fixed;
+    right: 4%;        /* near lamp */
+    bottom: 8%;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+}
+
+#cat-button-box.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* round container */
+#catCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: transform 0.35s ease;
+}
+
+#catCircle:hover {
+    transform: scale(1.1);
+}
+
+/* image inside the circle */
+#catButton {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* perfectly fills circle */
+}
+
+#catText {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    font-family: 'Courgette', cursive;
+    transform: translateX(-20px);
+}
+
+.hidden { display: none; }
+
+#bulb-hint {
+    display: block !important;
+    opacity: 0;
+    color: white;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    transition: opacity .6s ease;
+    font-family: 'Courgette', cursive;
+}
+
+#music-hint {
+    opacity: 0;
+    font-size: 1.3rem;
+    margin-top: 12px;
+    transition: opacity .7s ease;
+    font-family: 'Courgette', cursive;
+}
+
+.show-hint {
+    opacity: 1 !important;
+}
+
+#guyPic {
+    width: 300px;           /* adjust size */
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#guyPic.show {
+    opacity: 1;
+    transform: scale(1);
+}
